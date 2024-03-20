@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelLooka</title>
+
+    <link rel="Palawan" sizes="180x180" href="Palawan.jpg">
+    <link rel="icon" type="image/png" sizes="64x64" href="logo4.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="logo4.png">
+
+    <link rel="manifest" href="site.webmanifest">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden; 
+            position: relative; 
+        }
+
+        #video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; 
+        }
+
+        .container {
+            max-width: 600px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: grid;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .error-message {
+            color: #ff0000;
+            margin-top: 5px;
+        }
+
+        .s-header__nav {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .s-header__nav li.has-children:hover .sub-menu {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .s-header__nav .sub-menu li {
+            background-color: rgba(255, 255, 255, 0.5);
+            color: #000;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .s-header__nav .sub-menu li:hover {
+            color: rgb(0, 140, 255);
+            text-shadow: 0 0 10px rgba(0, 110, 255, 0.5);
+        }
+
+        .s-header__nav .sub-menu li a {
+            color: #000;
+        }
+
+        .s-header__nav .sub-menu {
+            display: none;
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .s-header__nav li.has-children:hover .sub-menu {
+            display: block;
+        }
+    </style>
+
+</head>
+<body>
+    <video id="video-background" autoplay muted loop>
+
+        <source src="pexelbooking.mp4" type="video/mp4">
+     
+    </video>
+
+    <div class="container">
+        <h2>Hotel Booking Form</h2>
+        <form id="bookingForm">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+        
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+        
+                    <label for="date">Date:</label>
+                    <input type="date" id="date" name="date" required>
+        
+                    <label for="time">Time:</label>
+                    <input type="time" id="time" name="time" required>
+        
+                    <label for="guests">Number of Guests:</label>
+                    <select id="guests" name="guests" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+        
+                    <label for="hotel">Hotel:</label>
+                    <select id="hotel" name="hotel" required>
+                        <option value="1">Four Points Palawan Hotel</option>
+                        <option value="2">Coron Westown Hotel</option>
+                        <option value="3">Two Seasons Coron Bayside Hotel</option>
+                        <option value="4">H Hotel El Nido Palawan</option>
+                        <option value="5">Funny Lion Hotel Palawan</option>
+                        <option value="6">Holiday Suites</option>
+                        <option value="7">Seda Lio Hotel</option>
+                        <option value="8">Venus Royale Hotel</option>
+                    </select>
+          
+
+            <button type="button" onclick="submitForm()">Book Now</button>
+        </form>
+
+        <div id="errorMessage" class="error-message"></div>
+    </div>
+
+    <script>
+        function submitForm() {
+            var form = document.getElementById('bookingForm');
+            var errorMessage = document.getElementById('errorMessage');
+
+            if (form.checkValidity()) {
+                errorMessage.innerHTML = '';
+                alert('Booking submitted successfully to the Hotel of choice! Please wait for an email for confirmation.');
+            } else {
+                errorMessage.innerHTML = 'Please fill out all fields correctly.';
+            }
+        }
+    </script>
+
+</body>
+</html>
